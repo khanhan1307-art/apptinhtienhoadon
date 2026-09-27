@@ -15,6 +15,7 @@ menu = {
         "Mì Ý Bò Bằm": 95000,"GÀ CHIÊN MẮM TỎI":29000,
         "Burger Gà": 35000,
         "Bít tết Bò Mỹ": 250000,
+        "Lẩu cá đuối": 100000,
         "Sườn nướng BBQ": 150000,
         "Cánh gà chiên mắm": 75000,
         "Lẩu cá diêu hồng": 200000,
@@ -56,7 +57,7 @@ if "admin_logged_in" not in st.session_state:
 page = st.sidebar.radio("📋 Chọn trang hệ thống", ["🍽️ Order", "🔑 Admin"])
 
 if page == "🍽️ Order":
-    st.title("🍽️ Hệ thống Order Nhà Hàng_Dr Bình")
+    st.title("🍽️ Hệ thống Order Nhà Hàng_KhanhAn")
     st.caption("Ghi nhận order nhanh chóng và chính xác theo thời gian thực")
 
     col1, col2 = st.columns([1, 1.3])
@@ -78,7 +79,7 @@ if page == "🍽️ Order":
                 st.session_state.order_dict[item]["Thành tiền"] = (
                     st.session_state.order_dict[item]["Số lượng"] * price
                 )
-                st.session_state.order_dict[item]["Bàn"] = table_number
+st.session_state.order_dict[item]["Bàn"] = table_number
             else:
                 st.session_state.order_dict[item] = {
 "Bàn": table_number,
@@ -149,7 +150,7 @@ if page == "🍽️ Order":
                     st.session_state.order_dict = {}
                     st.rerun()
         else:
-            st.info(
+st.info(
                 "Giỏ hàng đang trống. Hãy chọn món ăn/đồ uống bên trái để lên đơn."
             )
 elif page == "🔑 Admin":
@@ -230,7 +231,7 @@ elif page == "🔑 Admin":
             st.subheader("📅 Thống kê doanh thu theo Ngày")
 
             # Trích xuất ngày từ trường thời gian thật
-            df_history["Ngày"] = pd.to_datetime(df_history["Thời gian"]).dt.date
+df_history["Ngày"] = pd.to_datetime(df_history["Thời gian"]).dt.date
             df_daily_revenue = (
 df_history.groupby("Ngày")["Thành tiền"].sum().reset_index()
             )
@@ -301,7 +302,7 @@ df_history.groupby("Ngày")["Thành tiền"].sum().reset_index()
                 st.metric(label=best_seller, value=f"{best_seller_qty} phần")
             with col_kpi2:
                 st.warning("⚡ KHUNG GIỜ VÀNG (Đông khách nhất)")
-                st.metric(
+st.metric(
                     label=f"Khung giờ: {best_hour:02d}:00 - {(best_hour+1):02d}:00",
 value=f"{best_hour_qty} phần",
                 )
@@ -366,7 +367,7 @@ value=f"{best_hour_qty} phần",
                 )
                 st.dataframe(
                     summary_gio[summary_gio["Số_lượng_món"] > 0].style.format(
-                        {"Doanh_thu": "{:,.0f} VNĐ"}
+{"Doanh_thu": "{:,.0f} VNĐ"}
                     ),
                     use_container_width=True,
 hide_index=True,

@@ -1,7 +1,3 @@
-
-Truy cập link để tham gia cộng đồng
-https://tinhtienbillhoadon-x8u4sm2swqfzzuthnrvzcm.streamlit.app/
-https://apptinhtienhoadon-7kgr39jwbbatprrumsgfmf.streamlit.app/
 import os
 from datetime import datetime
 import pandas as pd
